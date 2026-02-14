@@ -4,7 +4,7 @@
 
 beBrivus is a centralized web-based system connecting **Students, Mentors, Institutions, and Administrators** in a structured, monitored, and transparent environment.
 
-It ensures administrative visibility, controlled opportunity publishing, structured mentorship booking, AI consultation, and activity tracking.
+**Figma Design:** [View beBrivus Capstone Design](https://www.figma.com/design/CNoGWFBj59n4JHGY4oVd0X/beBrivus-Capstone-Figma-Design?node-id=4567-271&p=f&t=6nKPO0c8MaWlmShw-0)
 
 ---
 
@@ -270,3 +270,5 @@ beBrivus enables:
 * Secure, traceable platform engagement
 
 The architecture ensures **visibility, control, and responsible system usage** while supporting independent operations for each role.
+
+Do you want me to do that next?
