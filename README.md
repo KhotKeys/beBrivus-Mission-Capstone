@@ -1,150 +1,210 @@
 # beBrivus System
 
-AI-Supported Mentorship & Opportunity Management Platform
+**AI-Supported Mentorship & Opportunity Management Platform**
 
-beBrivus is a centralized web-based system that connects Students, Mentors, Institutions, and Administrators within a structured and monitored environment for opportunity access, mentorship booking, AI support, and activity tracking.
+beBrivus is a centralized web-based system connecting **Students, Mentors, Institutions, and Administrators** in a structured, monitored, and transparent environment.
 
-The system emphasizes administrative oversight, transparency, and controlled workflows.
-
-**Figma Design (UI Reference):**
-[https://www.figma.com/design/CNoGWFBj59n4JHGY4oVd0X/beBrivus-Capstone-Figma-Design](https://www.figma.com/design/CNoGWFBj59n4JHGY4oVd0X/beBrivus-Capstone-Figma-Design)
+It ensures administrative visibility, controlled opportunity publishing, structured mentorship booking, AI consultation, and activity tracking.
 
 ---
 
-# System Overview
+## Table of Contents
 
-beBrivus operates through role-based access:
+* [System Architecture Overview](#system-architecture-overview)
 
-## Admin
-
-The Admin has full system control and visibility.
-
-Admin responsibilities include:
-
-* Creating and assigning Institution and Mentor accounts via email
-* Generating temporary passwords and sending onboarding links
-* Viewing all submitted opportunities
-* Monitoring mentorship bookings
-* Managing resources, forum, analytics, and AI system
-* Viewing Recent Activity (signups, logins, bookings, link tracking)
-
-When:
-
-* An Institution submits an opportunity → it appears immediately on the Admin dashboard.
-* A Mentor booking is made → the Admin is notified.
-* A user signs up or logs in → activity appears in Recent Activity.
-* A student clicks an external opportunity link → the action is tracked and recorded.
+  * [Admin (Platform Oversight)](#1-admin-platform-oversight)
+  * [Institution Portal](#2-institution-portal)
+  * [Mentor Portal](#3-mentor-portal)
+  * [Student / Graduate Portal](#4-student--graduate-portal)
+* [AI Consultation Chatbot](#ai-consultation-chatbot)
+* [Core Modules](#core-modules)
+* [Technology Stack](#technology-stack)
+* [Local Development](#local-development)
+* [Project Structure](#project-structure)
+* [System Principles](#system-principles)
+* [Summary](#summary)
 
 ---
 
-## Institution Portal
+## System Architecture Overview
 
-* Created and configured by Admin.
-* Receives generated password and login link.
-* Must change password on first login.
-* Can submit opportunities.
+The system operates through **role-based access control** with centralized monitoring.
 
-Submitted opportunities:
+### 1. Admin (Platform Oversight)
 
-* Are stored in the system.
-* Appear on the Admin dashboard.
-* Trigger email notification to Admin.
+The Admin maintains **full system control and visibility**:
 
----
+* Creates and assigns Institution and Mentor accounts via email
+* Generates temporary passwords and sends onboarding links
+* Monitors opportunity submissions
+* Manages resources, forum, analytics, and AI system
+* Views Recent Activity for all platform users
 
-## Mentor Portal
+<details>
+<summary>Notifications & Activity</summary>
 
-* Assigned by Admin via email.
-* Must change password on first login.
-* Can manage booking requests and session status.
+* On the Admin dashboard (Recent Activity)
+* Via assigned Admin email for critical actions
 
-Bookings:
+This ensures transparency and centralized monitoring without interfering with role-specific workflows.
 
-* Are recorded in the system.
-* Appear on the Admin dashboard.
-* Trigger Admin notification.
+</details>
 
 ---
 
-## Student/User Portal
+### 2. Institution Portal
+
+Institutions are **created and configured by the Admin**.
+
+**Process:**
+
+* Receives generated password and login link
+* Must change password on first login
+* Can submit opportunities
+
+<details>
+<summary>Opportunity Submission Workflow</summary>
+
+When an opportunity is submitted:
+
+* Stored and counted on the Institution dashboard
+* Sent to the Student/Graduate portal
+* Appears on the Admin dashboard
+* Triggers a Recent Activity entry for Admin visibility
+* Sends email notification to Admin
+
+**Note:** Institutions do not publish independently without Admin oversight.
+
+</details>
+
+---
+
+### 3. Mentor Portal
+
+Mentors are assigned by the Admin via email.
+
+**Process:**
+
+* Receives generated password and login link
+* Must change password on first login
+
+**Mentor Booking Workflow:**
+
+* Booking appears on the assigned Mentor’s dashboard
+* Booking is recorded on the Student’s dashboard
+* Admin receives a Recent Activity update (monitoring only)
+
+This ensures Mentor–Student interaction is direct while maintaining platform-level visibility.
+
+---
+
+### 4. Student / Graduate Portal
 
 Students can:
 
-* Register and log in.
-* Browse opportunities.
-* Book mentorship sessions.
-* Use the AI chatbot.
-* Access resources.
-* Participate in the forum.
-* Click external links.
+* Register and log in
+* Browse opportunities
+* Book mentorship sessions
+* Access resources
+* Participate in forum discussions
+* Use the AI consultation chatbot
+* Click external links
 
-All key actions are recorded in Recent Activity for Admin monitoring.
+All actions are recorded in **Recent Activity** for Admin monitoring.
 
 ---
 
-# AI Chatbot System
+## AI Consultation Chatbot
 
-The system includes an integrated AI chatbot powered by the Gemini API.
+The platform includes an **AI-powered chatbot** integrated via the **Gemini API**.
 
-The AI system:
+**Features:**
 
-* Provides academic and career guidance.
-* Assists with opportunity preparation.
-* Maintains session-based conversation history.
-* Stores all interactions securely.
+* Academic and career guidance consultation
+* Application preparation support
+* Context-aware conversation handling
+* Session-based interaction storage
+* Anti copy-paste restriction (consultation only)
 
-Environment variable:
+**Environment Variable:**
 
-```
+```bash
 GEMINI_API_KEY=your_api_key
 ```
 
 ---
 
-# Core Modules
+## Core Modules
 
-* Role-Based Authentication
+* Role-Based Authentication (JWT)
 * Opportunity Management
-* Applications Management
-* Mentorship Booking System
-* AI Chatbot System
-* Forum Module
+* Mentor Booking System
+* AI Consultation System (Gemini Integration)
 * Resource Management
-* Messaging System
-* Analytics & Tracking
+* Forum Module
+* Activity Tracking (Recent Activity Engine)
+* External Link Tracking
 * Email Notification Service
-* Video Session Support
+* Analytics Monitoring
 
 ---
 
-# Technology Stack
+## Technology Stack
 
-Frontend:
+**Frontend:**
 
 * React + TypeScript
 * Tailwind CSS
 * Vite
 
-Backend:
+**Backend:**
 
 * Django
 * Django REST Framework
 
-Database:
+**Database:**
 
-* SQLite (development) / PostgreSQL (production-ready)
+* SQLite (Development)
+* PostgreSQL (Production-ready)
 
-AI Integration:
+**AI Integration:**
 
 * Gemini API
 
-Authentication:
+**Authentication:**
 
 * JWT-based system
 
 ---
 
-# Project Structure
+## Local Development
+
+<details>
+<summary>Backend Setup</summary>
+
+```bash
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+</details>
+
+<details>
+<summary>Frontend Setup</summary>
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+</details>
+
+---
+
+## Project Structure
 
 ```
 beBrivus-Mission-Capstone/
@@ -188,36 +248,25 @@ beBrivus-Mission-Capstone/
 
 ---
 
-# Local Development
+## System Principles
 
-Backend:
-
-```bash
-cd backend
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py runserver
-```
-
-Frontend:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
+* Centralized administrative oversight
+* Role separation with controlled workflows
+* Transparent activity tracking
+* Structured opportunity and mentorship management
+* Responsible AI consultation usage
+* Secure and accountable platform operations
 
 ---
 
-# Summary
+## Summary
 
-beBrivus is a monitored, role-based system designed to ensure:
+beBrivus enables:
 
-* Centralized administrative oversight
-* Transparent opportunity management
-* Structured mentorship workflows
-* AI-assisted academic support
-* Engagement tracking through Recent Activity
-* Secure and accountable system operations
+* Monitored opportunity publishing
+* Direct Mentor–Student booking interactions
+* Administrative visibility via Recent Activity
+* AI-assisted consultation support
+* Secure, traceable platform engagement
 
-The architecture emphasizes separation of roles, controlled publishing, and system-wide visibility.
+The architecture ensures **visibility, control, and responsible system usage** while supporting independent operations for each role.
